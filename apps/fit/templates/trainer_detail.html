@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/trainer_detail.css' %}">
+    <title>Тренер</title>
+</head>
+<body>
+    <div class="container">
+        <a href="http://127.0.0.1:8000/trainers/" class="back-button">Назад к списку тренеров</a>
+        <h1>{{ trainer.full_name }}</h1>
+        <img src="{{ trainer.profile_image.url }}" alt="{{ trainer.full_name }} Image" class="profile-image">
+        <p>Дата рождения: {{ trainer.date_of_birth }}</p>
+        <p>Пол: {{ trainer.gender }}</p>
+        <ul>Спортзалы: 
+            {% for gym in trainer.gyms.all %}
+                <li>{{ gym.name }},</li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'schedule_detail' trainer.pk %}">Расписание тренера</a>
+        <form action="{% url 'make_appointment' trainer.pk %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="appointment-button">Записаться на тренировку</button>
+        </form>
+    </div>
+</body>
+</html>

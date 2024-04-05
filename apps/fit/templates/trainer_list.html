@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/trainer_list.css' %}">
+    <title>Список тренеров</title>
+</head>
+<body>
+    <div class="container">
+        <a href="http://127.0.0.1:8000/main/" class="back-button">Назад на главную страницу</a>
+        <h1>Список тренеров</h1>
+        <ul>
+            {% for trainer in trainers %}
+                <li><a href="{% url 'trainer_detail' trainer.pk %}">{{ trainer.full_name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

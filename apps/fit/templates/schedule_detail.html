@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/shedule_detail.css' %}">
+    <title>Расписание - {{ trainer.full_name }}</title>
+</head>
+<body>
+    <div class="container">
+        <a href="http://127.0.0.1:8000/trainer/{{ trainer.pk }}/" class="back-button">Назад к информации о тренере</a>
+        {% csrf_token %}
+        <h1>{{ trainer.full_name }}</h1>
+        <h2>Расписание:</h2>
+        <div class="schedule-items">
+            {% for schedule in schedules %}
+            <div class="schedule-item">
+                <h3>Зал: {{ schedule.gym }}</h3>
+                <p>День недели: {{ schedule.day_of_week }}</p>
+                <p>Время: {{ schedule.start_time }} - {{ schedule.end_time }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

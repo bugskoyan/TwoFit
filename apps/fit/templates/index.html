@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+    <title>TwoFit</title>
+</head>
+<body>
+    <header>
+        <h1>Добро пожаловать в TwoFit</h1>
+        <p>Тут вы можете ознакомиться с нашими тренерами и записаться на тренировку</p>
+    </header>
+    <div class="container">
+        <ul>
+            <li><a href="{% url 'trainer_list' %}">Наши тренера</a></li>
+        </ul>
+    </div>
+    <section id="about">
+        <div class="container">
+            <h2>О нас:</h2>
+            <p>Мы - команда профессиональных тренеров, готовых помочь вам достичь ваших целей в фитнесе.</p>
+            <p>Наши тренеры имеют обширный опыт и сертификации, чтобы обеспечить вам наилучшую тренировку.</p>
+        </div>
+    </section>
+</body>
+</html>
